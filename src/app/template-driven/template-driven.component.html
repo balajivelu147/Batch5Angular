@@ -1,0 +1,51 @@
+<form name="form" #f="ngForm" (ngSubmit)="f.form.valid && postAdd()"> 
+    <h3>{{title}}</h3>
+<mat-form-field>
+    <mat-label>Your Brand</mat-label>
+    <input matInput id="brand" class="input-box" 
+    name="brand" type="text" [(ngModel)]="formsModel.brand"  #brand="ngModel"   required>
+  <!-- <div *ngIf="f.submi" -->
+    
+ 
+</mat-form-field>
+<div *ngIf ="f.submitted && brand.invalid" style="color: red;">
+    <mat-error *ngIf="brand.errors.required">brand cant be empty</mat-error> 
+ </div>
+<br/>
+
+<mat-form-field>
+    <mat-label>Your Model</mat-label>
+    <input matInput id="Model" class="input-box" #model="ngModel" name="model" type="text"
+     [(ngModel)]="formsModel.model" required>
+ 
+</mat-form-field>
+<div *ngIf ="f.submitted && model.invalid" style="color: red;">
+    <mat-error *ngIf="model.errors.required">model cant be empty</mat-error> 
+ </div>
+<br/>
+
+<label>fuel type</label>
+<mat-radio-group  class="input-radio"  #fuelType="ngModel"  name="fuelType" [(ngModel)]="formsModel.fuelType">
+  <mat-radio-button  value="petrol">petrol</mat-radio-button>
+  <mat-radio-button  value="diesel">diesel</mat-radio-button>
+  <mat-radio-button  value="electric">electric</mat-radio-button>
+</mat-radio-group>
+---------------------<span>{{formsModel.fuelType}}</span>
+
+<br/>
+<mat-form-field>
+    <mat-label>Year of registration</mat-label>
+    <mat-select  name="registrationYear"  [(ngModel)]="formsModel.registrationYear"  #registrationYear="ngModel">
+        <mat-option value="2020">2020</mat-option>
+        <mat-option  value="2019">2019</mat-option>
+        <mat-option value="2018">2018</mat-option>
+        <mat-option value="2017">2017</mat-option>
+        <mat-option value="2016">2016</mat-option>
+
+    </mat-select>
+</mat-form-field>
+<br/>
+
+
+<button mat-raised-button color="primary" type="submit">Post your Add</button>
+</form>

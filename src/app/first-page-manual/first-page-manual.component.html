@@ -1,0 +1,37 @@
+<h3>{{title}}</h3>
+<mat-form-field>
+    <mat-label>Your Brand</mat-label>
+    <input matInput id="brand" class="input-box" [(ngModel)]="brand">
+</mat-form-field>
+<br/>
+
+<mat-form-field>
+    <mat-label>Your Model</mat-label>
+    <input matInput id="Model" class="input-box"  [ngModel]="model">
+</mat-form-field>
+<br/>
+
+<label>fuel type</label>
+<mat-radio-group  class="input-radio" [ngModel]="fuelType">
+  <mat-radio-button  value="petrol">petrol</mat-radio-button>
+  <mat-radio-button  value="diesel">diesel</mat-radio-button>
+  <mat-radio-button  value="electric">electric</mat-radio-button>
+</mat-radio-group>
+---------------------<span>{{fuelType}}</span>
+<span>>fuelType</span>
+<br/>
+<mat-form-field>
+    <mat-label>Year of registration</mat-label>
+    <mat-select  [(ngModel)]="registrationYear">
+        <mat-option value="2020">2020</mat-option>
+        <mat-option  value="2019">2019</mat-option>
+        <mat-option value="2018">2018</mat-option>
+        <mat-option value="2017">2017</mat-option>
+        <mat-option value="2016">2016</mat-option>
+
+    </mat-select>
+</mat-form-field>
+<br/>
+
+<span style="color: red;">{{errorMessage}}</span>
+<button mat-raised-button color="primary" (click)="postAdd()">Post your Add</button>
