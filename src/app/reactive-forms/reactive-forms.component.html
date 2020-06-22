@@ -1,6 +1,14 @@
 
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 <input type="text" formControlName="userName"/>
+<div *ngIf ="submitted && f?.userName?.touched && f?.userName?.errors" style="color: red;">
+    <mat-error *ngIf="f.userName?.errors?.required">username cant be empty</mat-error> 
+    <mat-error *ngIf="f.userName?.errors?.minlength">min 5</mat-error> 
+    <mat-error *ngIf="f.userName?.errors?.maxlength">max 10</mat-error> 
+    <mat-error *ngIf="f.userName?.errors?.customlength">custom validation min 5 failed</mat-error> 
+
+
+ </div>
 <br/>
 <input type="password" formControlName="password"/>
 <button type="submit">signIn</button>
