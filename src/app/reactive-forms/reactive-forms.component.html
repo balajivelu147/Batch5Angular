@@ -1,5 +1,5 @@
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" >
 <input type="text" formControlName="userName"/>
 <div *ngIf ="submitted && f?.userName?.touched && f?.userName?.errors" style="color: red;">
     <mat-error *ngIf="f.userName?.errors?.required">username cant be empty</mat-error> 
@@ -11,5 +11,18 @@
  </div>
 <br/>
 <input type="password" formControlName="password"/>
-<button type="submit">signIn</button>
+
+<button type="submit" (click)="addItem()">add</button>
+<div formArrayName="authorization" *ngFor="let item of loginForm.get('authorization').controls; let i = index;">
+    <div [formGroupName]="i">
+      <input type="text" formControlName="authority"/>   
+      <input type="text" formControlName="author"/>        
+   
+<button type="submit"  (click)="removeItem(i)">remove</button>
+    </div>
+</div>
+
+<button type="submit" (click)= "onSubmit()">signIn</button>
 </form>
+
+
