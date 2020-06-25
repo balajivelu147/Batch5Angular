@@ -13,14 +13,14 @@
 <input type="password" formControlName="password"/>
 
 <button type="submit" (click)="addItem()">add</button>
-<div formArrayName="authorization" *ngFor="let item of loginForm.get('authorization').controls; let i = index;">
+<!-- <div formArrayName="authorization" *ngFor="let item of loginForm.get('authorization').controls; let i = index;">
     <div [formGroupName]="i">
       <input type="text" formControlName="authority"/>   
       <input type="text" formControlName="author"/>        
    
 <button type="submit"  (click)="removeItem(i)">remove</button>
     </div>
-</div>
+</div> -->
 
 <button type="submit" (click)= "onSubmit()">signIn</button>
 </form>
