@@ -13,6 +13,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { LeftNavPanelComponent } from './shared/left-nav-panel/left-nav-panel.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { UGComponent } from './Exams/ug/ug.component';
+import { PGComponent } from './Exams/pg/pg.component';
+import { ResultsComponent } from './Exams/results/results.component';
+import { MeritComponent } from './students/merit/merit.component';
+import { SportsQuotaComponent } from './students/sports-quota/sports-quota.component';
 
 
 @NgModule({
@@ -21,7 +34,10 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     MyFirstPageComponent,
     FirstPageManualComponent,
     TemplateDrivenComponent,
-    ReactiveFormsComponent
+    ReactiveFormsComponent,
+    LeftNavPanelComponent,
+    MeritComponent,
+    SportsQuotaComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -32,7 +48,14 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatTableModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
