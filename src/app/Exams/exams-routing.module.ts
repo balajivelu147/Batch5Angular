@@ -8,12 +8,15 @@ import { PGComponent } from './pg/pg.component';
 const routes: Routes = [
   {
     path: '',
-    component: ResultsComponent,
-    children: [
-      { path: 'ug', component: UGComponent},
-      { path: 'pg', component: PGComponent}
-    ]
+    component: ResultsComponent
+    // ,
+    // children: [
+    //   { path: 'ug', component: UGComponent},
+    //   { path: 'pg', component: PGComponent}
+    // ]
   }
+  , { path: 'ug/:name/:year', component: UGComponent},
+  { path: 'pg', component: PGComponent}
 
 ];
 
