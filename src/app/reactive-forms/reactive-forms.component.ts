@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { RegexPattern } from 'src/app/shared/regexPattern';
-import { tap, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { tap, map, debounceTime, distinctUntilChanged, first, switchMap } from 'rxjs/operators';
 import { SharedService } from '../shared/shared.service';
 import { FirstPageManualComponent } from '../first-page-manual/first-page-manual.component';
 
@@ -11,7 +11,7 @@ import { FirstPageManualComponent } from '../first-page-manual/first-page-manual
   templateUrl: './reactive-forms.component.html',
   styleUrls: ['./reactive-forms.component.scss']
 })
-export class ReactiveFormsComponent implements OnInit  {
+export class ReactiveFormsComponent implements OnInit {
 
   loginForm: FormGroup;
   userNameValidators: any = [Validators.required, Validators.maxLength(10), Validators.minLength(5)];
@@ -25,7 +25,16 @@ export class ReactiveFormsComponent implements OnInit  {
     // this.updateFuelType();
     this.sharedService.sharedFunction();
     console.log(this.sharedService.sharedParameter);
-    this.sharedService.GetTCSData().subscribe(anyName => this.TCSdata = anyName);
+    this.sharedService
+      .GetTCSData()
+      .pipe(
+        first(),
+        map(anyName => this.TCSdata = anyName) /// this is for mutation
+        , tap(anyName => this.TCSdata = anyName) ///only for side effects
+        /// its for stream of data, it will take last obsersved value
+        /// we have 3 request, it will take last request and ignore the previous 2 requests
+        , switchMap(anyName => this.TCSdata = anyName))
+      .subscribe();
     this.loginForm = new FormGroup({
       userName: new FormControl('', [Validators.required, this.customValidator]),
       password: new FormControl('',
