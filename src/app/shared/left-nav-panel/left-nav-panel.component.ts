@@ -64,7 +64,7 @@ export class LeftNavPanelComponent implements OnInit, OnDestroy {
         {
           displayName: 'UG',
           iconName: 'how_to_reg',
-          route: '/exams/ug'
+          route: '/exams/ug/2018'
         },
         {
           displayName: 'PG',

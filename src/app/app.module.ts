@@ -26,6 +26,7 @@ import { PGComponent } from './Exams/pg/pg.component';
 import { ResultsComponent } from './Exams/results/results.component';
 import { MeritComponent } from './students/merit/merit.component';
 import { SportsQuotaComponent } from './students/sports-quota/sports-quota.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { SportsQuotaComponent } from './students/sports-quota/sports-quota.compo
     MatSidenavModule,
     MatExpansionModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
