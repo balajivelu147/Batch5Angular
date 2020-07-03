@@ -1,0 +1,20 @@
+promise - 
+observables - used when we have stream of data --> 
+
+subscribe --> triggering the observables/promise or it will invoke the observables to emit the observed value
+unscribe --> this unscribes the subscriber
+
+ways to unscribe:
+
+async pipe - best approach --> its an pure pipe , unscribes automatically when ever subscription happens
+ --->  if the usage of data is only in templete level
+first() -this allows subscription once --> onload
+take(5) - allows subscription 5 times and unscribes
+takewhile() - its an conditional suncriber, if condition true it will subscribe
+takeuntill() - subscribes untill the condition satisifies --> if you want the observable to be active and the end of 
+the subscription is not known,, and if the data usage is required in yout ts file you may need this operator
+
+
+
+Observables --> subject
+subject --> subject is an special type of observable, this is an example for cold observables

@@ -21,10 +21,13 @@
 <button type="submit"  (click)="removeItem(i)">remove</button>
     </div>
 </div> -->
-
+<span>{{(TCSdataAsync | async)?.chart.result[0].meta.currency}}</span>
 <button type="submit" (click)= "onSubmit()">signIn</button>
 </form>
-<span>{{TCSdata?.chart.result[0].meta.currency}}</span>
-
-<span>{{TCSdata?.chart.result[0].meta.symbol}}</span>
-<span>{{TCSdata?.chart.result[0].meta.exchangeName}}</span>
+<span>withAsync: {{ subjectService.sampleSubject$ | async }}</span><br/>
+<span>withTake: {{subjectValue}}</span><br/>
+<span>wtihTakeWhile: {{subjecttakeWhileValue}}</span><br/>
+<span>wtihTakeUntil: {{subjectTakeUntil}}</span>
+<button (click)="takeSample()">taketest</button>
+<!-- <span>{{TCSdata?.chart.result[0].meta.symbol}}</span>
+<span>{{TCSdata?.chart.result[0].meta.exchangeName}}</span> -->
