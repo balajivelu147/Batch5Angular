@@ -26,11 +26,16 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
   subjectTakeUntil;
   unsubscribe = new Subject<any>();
   constructor(
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     public subjectService: SubjectService
-  ) { }
+  ) {
+
+    this.subjectService.addSampleSubject(7);
+    this.subjectService.addSampleBehaviourSubject(7);
+   }
   ngOnInit(): void {
     // this.updateFuelType();
+
     this.sharedService.sharedFunction();
     console.log(this.sharedService.sharedParameter);
     // this.sharedService
@@ -75,7 +80,7 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
 
     this.subjectService.sampleSubject$.pipe(
       map(x => this.subjecttakeWhileValue = x),
-      takeWhile(x => false), //once the value becomes false, it becomes cold observable
+      takeWhile(x => x === 5), //once the value becomes false, it becomes cold observable
       map(x=> console.log(x)),
       // map(y  => console.log(( <= 15)))
     )
@@ -88,8 +93,12 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
         map(x=> console.log(x)),
         // map(y  => console.log(( <= 15)))
       )
-        .subscribe()
+        .subscribe();
+
+
   }
+
+
 
   ngOnDestroy() {
     this.unsubscribe.next();
@@ -111,6 +120,7 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
   takeSample() {
     this.counter = this.counter - 1;
     this.subjectService.addSampleSubject(this.counter);
+    this.subjectService.addSampleBehaviourSubject(this.counter);
   }
 
   addItem(): void {
