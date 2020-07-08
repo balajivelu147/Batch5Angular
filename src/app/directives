@@ -1,0 +1,14 @@
+directives :
+
+structural directives: conditional inbuild directives, it will start with atrick *, *ngFor,*ngIf, *ngSwitch
+custom directives: created for our needs
+attribute directive:
+component directive: 
+
+
+Pipes: 
+custom pipe:
+build-in pipe: currency, dateformat, lowercase
+
+
+pure and impure pipe

@@ -25,13 +25,13 @@
 <span>{{(TCSdataAsync | async)?.chart.result[0].meta.currency}}</span>
 <button type="submit" (click)= "onSubmit()">signIn</button>
 </form>
-<span>subject: {{subjectService.sampleSubject$ | async}}</span><br/>
+<span [appBackgroundHighlight]="'grey'">subject: {{subjectService.sampleSubject$ | async}}</span><br/>
 <span>Behaviour Subject: {{subjectService.sampleBehaviourSubject$ | async}}</span><br/>
 
-<span>withAsync: {{ subjectService.sampleSubject$ | async }}</span><br/>
+<span>withAsync: {{ subjectService.sampleSubject$ | async | arithmetic | currency }}</span><br/>
 <span>withTake: {{subjectValue}}</span><br/>
-<span>wtihTakeWhile: {{subjecttakeWhileValue}}</span><br/>
-<span>wtihTakeUntil: {{subjectTakeUntil}}</span>
+<span>wtihTakeWhile: {{subjecttakeWhileValue | currency}}</span><br/>
+<span  [appBackgroundHighlight]="'red'">wtihTakeUntil: {{subjectTakeUntil}}</span>
 <button (click)="takeSample()">taketest</button>
 <!-- <span>{{TCSdata?.chart.result[0].meta.symbol}}</span>
 <span>{{TCSdata?.chart.result[0].meta.exchangeName}}</span> -->

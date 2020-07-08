@@ -27,6 +27,8 @@ import { ResultsComponent } from './Exams/results/results.component';
 import { MeritComponent } from './students/merit/merit.component';
 import { SportsQuotaComponent } from './students/sports-quota/sports-quota.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BackgroundHighlightDirective } from './shared/directives/background-highlight.directive';
+import { ArithmeticPipe } from './shared/arithmetic.pipe';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ReactiveFormsComponent,
     LeftNavPanelComponent,
     MeritComponent,
-    SportsQuotaComponent
+    SportsQuotaComponent,
+    BackgroundHighlightDirective,
+    ArithmeticPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
