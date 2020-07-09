@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -12,15 +13,25 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 export class LeftNavPanelComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['select', 'position', 'name', 'weight', 'symbol'];
   selection = new SelectionModel<PeriodicElement>(true, []);
+  login: string = 'login';
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
+    private authService: AuthService) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
+  ngOnInit() {}
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     return null;
   }
 
-  ngOnInit() {}
-
+  isLoggedIn() {
+    this.login = this.login === 'login' ? 'logout' : 'login';
+    this.login === 'login' ? this.authService.logout() : this.authService.login();
+  }
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
@@ -101,11 +112,7 @@ export class LeftNavPanelComponent implements OnInit, OnDestroy {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
-  }
+
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);

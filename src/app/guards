@@ -1,0 +1,8 @@
+guards: if we want perform an logic when user loads 
+or unloads a page or a view or a module, we can use guards
+
+canActivate: it loads when we try to activate the page
+canActivateChild:  scope is at view(partial) level
+Resolve: used to prefetch the data
+canDeactivate: when user unloads the page without saving his work, we can prompt the user when he taps out
+CanLoad: we can provide restriction at module level

@@ -5,12 +5,14 @@ import { FirstPageManualComponent } from './first-page-manual/first-page-manual.
 import { MyFirstPageComponent } from './my-first-page/my-first-page.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { ExamsModule } from './Exams/exams.module';
+import { AuthGuardGuard } from './shared/guards/auth-guard.guard';
 
 
 const routes: Routes = [
   {
     path: 'reactive-forms',
-    component: ReactiveFormsComponent
+    component: ReactiveFormsComponent,
+    canActivate: [AuthGuardGuard]
   },
   {
     path: 'first-page-manual',
