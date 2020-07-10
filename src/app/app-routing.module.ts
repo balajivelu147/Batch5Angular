@@ -6,6 +6,7 @@ import { MyFirstPageComponent } from './my-first-page/my-first-page.component';
 import { TemplateDrivenComponent } from './template-driven/template-driven.component';
 import { ExamsModule } from './Exams/exams.module';
 import { AuthGuardGuard } from './shared/guards/auth-guard.guard';
+import { CanDeactivateGuard } from './shared/guards/can-deactivate.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: 'first-page-manual',
-    component: FirstPageManualComponent
+    component: FirstPageManualComponent,
+    canDeactivate: [CanDeactivateGuard]
   },
   {
     path: 'my-first-page',

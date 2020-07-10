@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SubjectService } from '../shared/subject.service';
 import { map } from 'rxjs/operators';
+import { CanDeactivateGuard } from '../shared/guards/can-deactivate.guard';
 
 @Component({
   selector: 'app-first-page-manual',
@@ -14,6 +15,7 @@ export class FirstPageManualComponent implements OnInit {
   brand;
   model;
   errorMessage = '';
+  isNoError: boolean;
 
   constructor(public subjectService: SubjectService) { }
 
@@ -73,13 +75,21 @@ export class FirstPageManualComponent implements OnInit {
       "YearOfRegistration" = ${this.registrationYear}
       }`;
       this.errorMessage = '';
+      this.isNoError = true;
       alert(finalResult);
     }
     else {
+      this.isNoError = false;
       this.errorMessage = 'please fill the required fields';
     }
   }
+  canDeactivate(): boolean {
+    
+    return  this.isNoError;
+  }
 }
+
+
 
 // export interface cls {
 //   update: string;

@@ -17,4 +17,5 @@ export class SharedService {
   GetTCSData() {
    return this.httpClient.get<any>(this.url);
   }
+  
 }
