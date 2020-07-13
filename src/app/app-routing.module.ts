@@ -7,13 +7,15 @@ import { TemplateDrivenComponent } from './template-driven/template-driven.compo
 import { ExamsModule } from './Exams/exams.module';
 import { AuthGuardGuard } from './shared/guards/auth-guard.guard';
 import { CanDeactivateGuard } from './shared/guards/can-deactivate.guard';
+import { UserResolver } from './shared/guards/resolve.guard';
 
 
 const routes: Routes = [
   {
     path: 'reactive-forms',
     component: ReactiveFormsComponent,
-    canActivate: [AuthGuardGuard]
+    canActivate: [AuthGuardGuard],
+    resolve: [UserResolver]
   },
   {
     path: 'first-page-manual',

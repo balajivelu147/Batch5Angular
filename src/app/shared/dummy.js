@@ -1,33 +1,32 @@
-let x =10;
-function dummy() {
+const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 
-   function dummyChild() {
-     return x*2;
+function parent() {
+   var x = 1;
+   return y;
+   function child(){
+      var y = 1;
+return x;
    }
 }
-dummy.dummyChild
-class dummyclass {
 
-   constructor() {}
+// function addVal(number) {
+// return function(number1){
 
-   
-}
+// }
+// }
 
-var dummyclass = new dummyclass();
+var adder = (function(){
+   var sum =0;
+   function add(n) {
+      sum += +n; 
+   }
+   add.valueOf = function() {
+      return sum;
+   }
+   return add;
+})
 
-function Person(x){ x}
-var person = Person() 
-person(x)
-var person = new Person()
+adder(1)(2);
 
-
-for(var i=0; i<5 ; i++){		
-   setTimeout(function(){console.log(i);},i*100);		
-}
-
-function isPolindrome(input) {
-if(input === input.split('').reverse.join('')){
-   return true;
-}
-return false;
-}
+var parent = new parent();
+Object.create();

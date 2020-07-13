@@ -29,6 +29,7 @@ import { SportsQuotaComponent } from './students/sports-quota/sports-quota.compo
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BackgroundHighlightDirective } from './shared/directives/background-highlight.directive';
 import { ArithmeticPipe } from './shared/arithmetic.pipe';
+import { UserResolver } from './shared/guards/resolve.guard';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { ArithmeticPipe } from './shared/arithmetic.pipe';
     MatListModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [UserResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

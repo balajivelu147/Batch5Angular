@@ -6,6 +6,8 @@ import { SharedService } from '../shared/shared.service';
 import { FirstPageManualComponent } from '../first-page-manual/first-page-manual.component';
 import { Observable, Subject } from 'rxjs';
 import { SubjectService } from '../shared/subject.service';
+import { ActivatedRoute } from '@angular/router';
+import { UserResolver } from '../shared/guards/resolve.guard';
 
 
 @Component({
@@ -25,9 +27,11 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
   subjecttakeWhileValue;
   subjectTakeUntil;
   unsubscribe = new Subject<any>();
+resolveVal: any;
   constructor(
     public sharedService: SharedService,
-    public subjectService: SubjectService
+    public subjectService: SubjectService,
+    public activatedRoute: ActivatedRoute
   ) {
 
     this.subjectService.addSampleSubject(7);
@@ -35,7 +39,7 @@ export class ReactiveFormsComponent implements OnInit, OnDestroy {
    }
   ngOnInit(): void {
     // this.updateFuelType();
-
+this.resolveVal = this.activatedRoute.snapshot.data[0];
     this.sharedService.sharedFunction();
     console.log(this.sharedService.sharedParameter);
     // this.sharedService
