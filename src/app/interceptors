@@ -1,0 +1,6 @@
+interceptors: helps you to interact with http requests in common,
+ wehn u submit a request or when you get he response
+
+
+add the tokens for every reqest
+storing the response in local storage

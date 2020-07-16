@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SharedService {
 
-  private readonly url = 'https://query1.finance.yahoo.com/v8/finance/chart/TCS.NS?region=IN&lang=en-IN&includePrePost=false&interval=2m&range=1d&corsDomain=in.finance.yahoo.com&.tsrc=finance';
+  private readonly url = 'http://query1.finance.yahoo.com/v8/finance/chart/TCS.NS?region=IN&lang=en-IN&includePrePost=false&interval=2m&range=1d&corsDomain=in.finance.yahoo.com&.tsrc=finance';
   constructor(private httpClient: HttpClient) { }
 
   public sharedParameter = 'sharing between components';
